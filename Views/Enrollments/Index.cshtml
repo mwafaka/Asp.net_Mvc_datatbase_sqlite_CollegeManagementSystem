@@ -1,0 +1,32 @@
+@model IEnumerable<CollegeManagementSystem.Models.Enrollment>
+
+<h2>Enrollments</h2>
+
+<p>
+    <a asp-action="Create">Create New Enrollment</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Grade</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var enrollment in Model)
+    {
+        <tr>
+            <td>@enrollment.Student?.FirstName</td>
+            <td>@enrollment.Course?.Title</td>
+            <td>@enrollment.Grade</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@enrollment.EnrollmentId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@enrollment.EnrollmentId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

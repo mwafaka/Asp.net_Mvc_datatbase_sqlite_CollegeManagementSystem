@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CollegeManagementSystem.Models.StudentParent>
+
+<h2>StudentParent</h2>
+
+<p>
+    <a asp-action="Create">Create New StudentParent</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Parent FirstNAme</th>
+            <th>Parent LastNAme</th>
+            <th>Course</th>
+            <th>Student</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var parent in Model)
+    {
+        <tr>
+            <td>@parent.FirstName</td>
+            <td>@parent.LastName</td>
+            <td>@parent.Course?.Title</td>
+            <td>@parent.Student?.FirstName</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@parent.StudentParentId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@parent.StudentParentId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

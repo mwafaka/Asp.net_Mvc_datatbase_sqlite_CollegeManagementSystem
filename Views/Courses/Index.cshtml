@@ -1,0 +1,38 @@
+@model IEnumerable<CollegeManagementSystem.Models.Course>
+
+<h2>Courses</h2>
+
+<form asp-controller="Courses" asp-action="Index">
+    <p>
+        Search by title: <input type="text" name="searchString" value="@ViewData["searchString"]" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<p>
+    <a asp-action="Create">Create New Course</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Credits</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var course in Model)
+    {
+        <tr>
+            <td>@course.Title</td>
+            <td>@course.Credits</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@course.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@course.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@course.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
